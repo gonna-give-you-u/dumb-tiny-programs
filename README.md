@@ -10,9 +10,18 @@ for windows idk tbh but some may not work because of system things like syscalls
 i made these programs on linux so it probably will compile and work for bsd (and other unix systems), but for windows ymmv<br>
 the programs compile for and work on both glibc and musl linux systems<br>
 <br>
-tell me if my code sucks, i want to learn how to make it not suck
+tell me in issues/PRs if my code sucks, i want to learn how to make it not suck
 
-## which binary to download?
+## what does each program do?
+**chargen-ascii:** generates random ascii characters with specified ranges and char count
+**dectime:** converts between decimal and sexagesimal ("normal", base-60) time
+**grug:** just outputs "Yes, "+arguments+" rhymes with Grug." or without arguments the word "that" in place of arguments. the most useless of these programs
+**hangman-blahblahblah:** a basic cli hangman implementation, currently doesn't support non-ascii characters. i totally didn't make this to compete against my brother learning java who i think gave up on his hangman implementation
+**spongecase:** converts text to sPoNgEbOb CaSe
+**tagsearch:** searches a specified 'taglist' file (or stdin) with a certain syntax for paths with certain tags assigned to them. probably the most useful of these programs. made when i was in belarus
+**volume:** (intentionally) awful pactl (pipewire?) cli volume management "tool"
+
+## which binary to download (from releases)?
 ***ARCHITECTURE:*** on linux/unix (including BSD) you can check with `uname -m`. my attempt at an explanation if you can't use that command or are too lazy: if your computer was made within the past 15-20 years and your cpu is intel/amd you very likely have x86_64, but i686 will work on these as well. if your computer is really ancient you probably have x86 (i386-i686). if your cpu is not intel/amd (e.g. qualcomm) you probably have aarch64. if you run a dinosaur-era (e.g.) DOS computer you might have 8086 (16-bit), don't even get me started on trying to build for this target. if you have another arch you probably know it<br>
 - **LINUX**: c library: if you use alpine or chimera you have musl, if you use void or gentoo you probably chose glibc but musl is a secondary option, if you have some other distro you probably have glibc<br>
 - **FREEBSD**: all you really need to know is the arch<br>
