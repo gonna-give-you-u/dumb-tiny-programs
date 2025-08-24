@@ -3,7 +3,7 @@
 
 these are cli applications, you need to start them in a terminal to use them properly (on windows you can use what's called "powershell" or "cmd"/"command prompt")
 
-on linux/unix (including bsd) systems make sure to `chmod +x [name of the binary]` to make it work instead of getting 'permission denied'
+on linux/unix (including bsd) systems make sure to `chmod +x [name of the binary]` and prefix `./` to the command to make it work instead of getting 'permission denied'
 
 how to build: literally just `g++ $file.cpp` should work for linux (and other unix systems like bsd if no non-standard syscalls/libc-features are used)<br>
 for windows idk tbh but some may not work because of system things like syscalls<br>
