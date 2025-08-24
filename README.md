@@ -8,6 +8,6 @@ for windows idk tbh but some may not work because of system things like syscalls
 i made these programs on linux so it probably will compile and work for bsd (and other unix systems), but for windows ymmv
 
 the programs compile for and work on both glibc and musl linux systems
-​
+
 
 tell me if my code sucks, i want to learn how to make it not suck
