@@ -10,7 +10,7 @@ the programs compile for and work on both glibc and musl linux systems<br>
 <br>
 tell me if my code sucks, i want to learn how to make it not suck
 
-## which binary should i download?
+## which binary to download?
 LINUX:
  - architecture: if you use a desktop or laptop from the past 20 years and an intel/amd cpu you probably have x86_64 (aka amd64). if your computer is more ancient you might have x86 (i386-i686). if you use a phone or raspberry pi or your cpu is not intel/amd you probably have aarch64 (aka arm64). if you have another arch you probably know it<br>
  - c library: if you use alpine or chimera you have musl, if you use void or gentoo you probably chose glibc but just check to be sure, if you have some other distro you probably have glibc<br>
