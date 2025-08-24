@@ -6,11 +6,11 @@ void convert(short direction, float h, float m, float s, float ms){
 	float tinms;
 	float toutms;
 	
-	if (direction == 0){ // sexagecimal to decimal
+	if (direction == 0){ // sexagesimal to decimal
 		tinms = 3600000*h + 60000*m + 1000*s + ms;
 		toutms = 125*(tinms/108);
 		factor = 100;
-	} else if (direction == 1){ // decimal to sexagecimal
+	} else if (direction == 1){ // decimal to sexagesimal
 		tinms = 10000000*h + 100000*m + 1000*s + ms;
 		toutms = 0.864*tinms;
 		factor = 60;
