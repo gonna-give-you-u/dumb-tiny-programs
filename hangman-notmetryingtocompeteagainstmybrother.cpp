@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
         invincible = true;
         lives = 4294967295;//just in case
     }
-    if (lives == 0) cout << "invincible mode" << endl;
+    if (invincible) cout << "invincible mode" << endl;
     else cout << lives << " lives" << endl;
 
     // set up vectors for guesses
