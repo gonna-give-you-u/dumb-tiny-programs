@@ -4,7 +4,7 @@
 #include <signal.h>
 #include <cstring>
 
-using namespace std;
+using namespace std;//Yes ik this isnt considered ideal practice but i'm not using external libs
 
 string theWord;
 void revealOnSigint(int thingy){
