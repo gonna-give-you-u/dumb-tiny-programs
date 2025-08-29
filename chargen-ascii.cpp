@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <sys/random.h>
 
 using namespace std;
 
@@ -8,14 +9,14 @@ int main(int argc, char* argv[]){
 	setlocale(LC_ALL, "");
 
 	if (argv[1] == NULL || argv[2] == NULL){
-		cout << "chargen START END [CHARS] [SEED]\nSTART: decimal value of start of range codepoint\n  END: decimal value of end of range codepoint\nCHARS: amount of chars to create\n SEED: seed to use for the random generator";
+		cout << "chargen START END [CHARS]" << endl << "START: decimal value of start of range codepoint\n  END: decimal value of end of range codepoint " << endl << "CHARS: amount of chars to create" << endl;
 		return 1;
 	}
-	int startRange = atoi(argv[1]);
-	int endRange = atoi(argv[2]);
+	int startRange = stoi(argv[1]);
+	int endRange = stoi(argv[2]);
 	int charCount;
 	if (argv[3] != NULL){
-		charCount = atoi(argv[3]);
+		charCount = stoi(argv[3]);
 	} else{
 		charCount = 1;
 	}
@@ -23,19 +24,15 @@ int main(int argc, char* argv[]){
 		cout << "END must be greater than START\n";
 		return 1;
 	}
-	if (argv[4] != NULL){
-		srand(atoi(argv[4]));
-	}
-	else{
-		srand(time(NULL));
-	}
 	
 	int theCodepoint;
 	char theChar;
+	unsigned int codepointRandomness;
 	
 	// Actually do stuff
 	for (int i=0;i<charCount;i++){
-		theCodepoint = rand()%(endRange-startRange+1)+startRange;
+		getrandom(&codepointRandomness, sizeof(unsigned int), GRND_NONBLOCK);
+		theCodepoint = codepointRandomness%(endRange-startRange+1)+startRange;
 		theChar = theCodepoint;
 		cout << theChar;
 	}
