@@ -85,19 +85,14 @@ int main(int argc, char* argv[]){
     bool correctGuess;
     bool wholeWordCorrectGuess;
     bool alreadyGuessed;
-    string guessPrompt;
     
         for (string s : guessedv) cout << s;
         cout << endl;
-    
-    if (getenv("PS2") != NULL) guessPrompt = getenv("PS2"); //it seems that bash doesn't normally 'export' this one
-    else guessPrompt = "> ";
-
     while (guessedv != wordv || lives > 0){
         correctGuess = false;
         alreadyGuessed = false;
         string guess;
-        cout << guessPrompt;
+        cout << "> ";
         getline(cin,guess);
         if (count(triedStuff.begin(),triedStuff.end(),guess) > 0){
             alreadyGuessed = true;
