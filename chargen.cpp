@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
 		theChar = theCodepoint;
 		wcout << theChar;
 	}
-	cout << endl;
+	wcout << endl;
 
 	
 	return 0;
