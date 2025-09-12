@@ -10,11 +10,11 @@ int main(int argc, char* argv[]){
 	setlocale(LC_ALL, "");
 
 	if (argv[1] == NULL || argv[2] == NULL){
-		cout << "chargen START END [CHARS]" << endl << "START: decimal value of start of range codepoint\n  END: decimal value of end of range codepoint " << endl << "CHARS: amount of chars to create" << endl;
+		cout << "chargen START END [CHARS]" << endl << "START: hex value of start of range codepoint\n  END: hex value of end of range codepoint " << endl << "CHARS: amount of chars to create" << endl;
 		return 1;
 	}
-	int startRange = stoi(argv[1]);
-	int endRange = stoi(argv[2]);
+	int startRange = stoi(argv[1],0,16);
+	int endRange = stoi(argv[2],0,16);
 	int charCount;
 	if (argv[3] != NULL){
 		charCount = stoi(argv[3]);
