@@ -7,7 +7,7 @@ these are cli applications, you need to start them in a terminal to use them pro
 on linux/unix (including bsd) systems make sure to `chmod +x [name of the binary]` and prefix `./` to the command to make it work instead of getting 'permission denied'
 
 how to build: literally just `g++ $file.cpp` should work for linux (and other unix systems like bsd if no non-standard syscalls/libc-features are used)<br>
-for windows idk tbh but some may not work because of system things like syscalls<br>
+for windows idk tbh but some may not work because of system include thingies (particularly `sys/random.h` in this repo)<br>
 i made these programs on linux so it probably will compile and work for bsd (and other unix systems), but for windows ymmv<br>
 the programs compile for and work on both glibc and musl linux systems<br>
 <br>
