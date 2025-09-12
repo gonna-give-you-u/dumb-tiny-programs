@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 	setlocale(LC_ALL, "");
 
 	if (argv[1] == NULL || argv[2] == NULL){
-		cout << "chargen START END [CHARS]" << endl << "START: hex value of start of range codepoint\n  END: hex value of end of range codepoint " << endl << "CHARS: amount of chars to create" << endl;
+		cout << "chargen START END [CHARS]" << endl << "START: hex value of start of range codepoint" << endl << "  END: hex value of end of range codepoint " << endl << "CHARS: amount of chars to create" << endl;
 		return 1;
 	}
 	int startRange = stoi(argv[1],0,16);
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 		charCount = 1;
 	}
 	if (endRange < startRange){
-		cout << "END must be greater than START\n";
+		cout << "END must be greater than START" << endl;
 		return 1;
 	}
 	
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
 		theChar = theCodepoint;
 		wcout << theChar;
 	}
-	cout << "\n";
+	cout << endl;
 
 	
 	return 0;
