@@ -81,8 +81,6 @@ int main(int argc, char* argv[]){
             cerr << "PUT A PROPER LIVES NUMBER (1st arg) NOT WHATEVER THAT IS" << endl;
             return 1;
         }
-        // clear the question from the terminal
-        cout << "\x1b[1A\x1b[2K\x1b[1A\x1b[2K";
     }
     if (lives == 0){
         invincible = true;
@@ -105,7 +103,7 @@ int main(int argc, char* argv[]){
     bool wholeWordCorrectGuess;
     bool alreadyGuessed;
     
-        for (u16string s : guessedv) s;
+        for (u16string s : guessedv) cout << converter.to_bytes(s);
         cout << endl;
 
     u16string guess;
