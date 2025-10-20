@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
         << "-f: return entire line in TAGFILE instead of just the path" << endl
         << "this binary searches for files with EITHER tag, i haven't been able to figure out how to make an 'and' match mode, but you can emulate with -f and piping it into another tagsearch command using - as the file" << endl
         //<< "MATCHING:" << endl
-        //<< "\t-a (--and): find/exclude files that have all specified tags (default)" << endl // CURRENTLY NOT DOING THIS IMPOSSIBLE BROKENNESS
+        //<< "\t-a (--and): find/exclude files that have all specified tags (default)" << endl // implementation too hard
         //<< "\t-o (--or): find/exclude files with any tag specified" << endl
         //<< "searching for multiple tags not yet (directly) supported by this binary" << endl
         //<< "currently -x and other opts must be separate and in this order" << endl
