@@ -3,12 +3,20 @@
 #include <algorithm>
 #include <signal.h>
 #include <cstring>
+#include <termios.h> // rip windows users
+#include <unistd.h>
+#include <codecvt>
+#include <locale>
 
-using namespace std;//Yes ik this isnt considered ideal practice but i'm not using external libs
+using namespace std;//Yes ik this isnt considered ideal practice but i'm not really using external libs
 
-string theWord;
+
+wstring_convert<std::codecvt_utf8<char16_t>, char16_t> converter;
+u16string theWord;
+string theWord8;
+
 void revealOnSigint(int thingy){
-    cout << "sigint received, quitting" << endl << "the word was: " << theWord << endl;
+    cout << "sigint received, quitting" << endl << "the word was: " << converter.to_bytes(theWord) << endl;
     exit(thingy);
 }
 
@@ -16,30 +24,41 @@ int main(int argc, char* argv[]){
     if (argc > 3) clog << "ignoring excess arguments" << endl;
     if (argv[1]) if (string(argv[1]) == "--help" || string(argv[1]) == "-h"){
         cerr << "usage: " << string(argv[0]) << " [WORD] [LIVES]" << endl
-        << "[WORD] (string): ASCII word or phrase, non-ASCII not yet supported because splitting it is weird and i gave up trying" << endl
+        << "[WORD] (string): word or phraseg" << endl
         << "[LIVES] (unsigned int): number of lives, 0 for infinite" << endl
         << "multiple letter guesses are interpreted as whole word guesses" << endl;
         return 1;
     }
     
     // set up word
-    if (argv[1]) theWord = argv[1];
-    else{
-        cout << "whats the word" << endl;
-        getline(cin,theWord);
-        // clear the word from the terminal
-        cout << "\x1b[1A\x1b[2K\x1b[1A\x1b[2K";
+    if (argv[1]) {
+    	theWord8 = argv[1];
+    	theWord = converter.from_bytes(theWord8);
     }
-    vector<char> wordv_char(theWord.begin(),theWord.end());
-    vector<string> wordv;
-    for (char c : wordv_char){
-        string wordvcharToPush(1,c);
+    else{
+        cout << "whats the word (won't echo)" << endl;
+
+        termios normalTerminal;
+        tcgetattr(STDIN_FILENO, &normalTerminal);
+        termios hiddenTerminal = normalTerminal;
+        hiddenTerminal.c_lflag &= ~ECHO;
+        tcsetattr(STDIN_FILENO, TCSANOW, &hiddenTerminal);
+
+        getline(cin,theWord8);
+    	theWord = converter.from_bytes(theWord8);
+
+        tcsetattr(STDIN_FILENO, TCSANOW, &normalTerminal);
+    }
+    vector<char16_t> wordv_char(theWord.begin(),theWord.end());
+    vector<u16string> wordv;
+    for (char16_t c : wordv_char){
+        u16string wordvcharToPush(1,c);
         wordv.push_back(wordvcharToPush);
     }
     unsigned int letters;
     letters = theWord.length();
-    for (string s : wordv)
-        if (s == " ")
+    for (u16string s : wordv)
+        if (s == u" ")
             letters--;
     cout << letters << " letters" << endl;
     signal(SIGINT, revealOnSigint);
@@ -73,11 +92,11 @@ int main(int argc, char* argv[]){
     else cout << lives << " lives" << endl;
 
     // set up vectors for guesses
-    vector<string> guessedv;
-    vector<string> triedStuff;
-    for (string s : wordv){
-        if (s == " ") guessedv.push_back(" ");
-        else guessedv.push_back("_");
+    vector<u16string> guessedv;
+    vector<u16string> triedStuff;
+    for (u16string s : wordv){
+        if (s == u" ") guessedv.push_back(u" ");
+        else guessedv.push_back(u"_");
     }
 
     cout << "start guessing" << endl;
@@ -86,14 +105,17 @@ int main(int argc, char* argv[]){
     bool wholeWordCorrectGuess;
     bool alreadyGuessed;
     
-        for (string s : guessedv) cout << s;
+        for (u16string s : guessedv) s;
         cout << endl;
-    while (guessedv != wordv || lives > 0){
+
+    u16string guess;
+    string guess8;
+    while (guessedv != wordv || lives > 0){ // start da gaem
         correctGuess = false;
         alreadyGuessed = false;
-        string guess;
         cout << "> ";
-        getline(cin,guess);
+        getline(cin, guess8);
+        guess = converter.from_bytes(guess8);
         if (count(triedStuff.begin(),triedStuff.end(),guess) > 0){
             alreadyGuessed = true;
             cerr << "you already guessed that" << endl;
@@ -115,7 +137,7 @@ int main(int argc, char* argv[]){
         if ((!correctGuess && !alreadyGuessed) && guess.length() > 0){
             if (!invincible) lives--;
             if (lives <= 0){
-                cerr << "skill issue" << endl << "the word was: " << theWord << endl;
+                cerr << "skill issue" << endl << "the word was: " << theWord8 << endl;
                 return 2;
             }
             triedStuff.push_back(guess);
@@ -127,7 +149,7 @@ int main(int argc, char* argv[]){
                 cout << " left" << endl;
             }
         }
-        for (string s : guessedv) cout << s;
+        for (u16string s : guessedv) cout << converter.to_bytes(s);
         cout << endl;
         if (guessedv == wordv) break;
     }
