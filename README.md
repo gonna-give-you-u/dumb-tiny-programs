@@ -20,7 +20,7 @@ tell me in issues/PRs if my code sucks, i want to learn how to make it not suck
 **grug:** just outputs "Yes, "+arguments+" rhymes with Grug." or without arguments the word "that" in place of arguments. the most useless of these programs<br>
 **hangman-blahblahblah:** a basic cli hangman implementation, currently doesn't support non-ascii characters. i totally didn't make this to compete against my brother learning java who i think gave up on his hangman implementation<br>
 **spongecase:** converts text to sPoNgEbOb CaSe<br>
-**tagsearch:** searches a specified 'taglist' file (or stdin) with a certain syntax for paths with certain tags assigned to them. probably the most useful of these programs. made when i was in belarus<br>
+**tagsearch:** searches a specified 'taglist' file (or stdin) with a certain syntax for paths with certain tags assigned to them. probably the most useful of these programs. зроблена ў беларусі<br>
 **volume:** (intentionally) awful pactl (pipewire?) cli volume management "tool"
 
 ## which binary to download (from releases)?
