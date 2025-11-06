@@ -1,7 +1,7 @@
 # some dumb tiny single-source-file programs i made in my free time (trash code warning (probably))
 **all of these i put under the mit licence**
 
-note: sometimes i update the code here but am too lazy to recompile and upload the binary. open an issue if you REALLY want me to do so
+note: sometimes i update the code here but am too lazy to upload the binaries. open an issue if you REALLY want me to do so
 
 these are cli applications, you need to start them in a terminal to use them properly (on windows you can use what's called "powershell" or "cmd"/"command prompt")
 
