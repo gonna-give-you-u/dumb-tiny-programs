@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){ // 1 giant main function veri good programming
             return 1;
         }
     } else
-    if (string(argv[1+ao]) == "-a" || string(argv[1+ao]) == "--and"){ //works now (but you can use pipes and the stdin file "-" to emulate this)
+    if (string(argv[1+ao]) == "-a" || string(argv[1+ao]) == "--and"){ //works now (but you can still use pipes and the stdin file "-" to emulate this)
         ao++;
         matchMode = 0;
         if (!argv[1+ao]){
