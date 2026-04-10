@@ -1,5 +1,6 @@
 # some dumb tiny single-source-file programs i made in my free time (trash code warning (probably))
 **all of these i put under the mit licence**
+**my site has the very very latest versions (so up to date that every time i save the code it's instantly pushed) but it's not always available (check the timetables)**
 
 note: sometimes i update the code here but am too lazy to upload the binaries. open an issue if you REALLY want me to do so
 
