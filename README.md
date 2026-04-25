@@ -1,3 +1,4 @@
+# 2026-04-25 00:05 +0000 migrated to https://codeberg.org/gonna_give_you_u/dumb-tiny-programs
 # some dumb tiny single-source-file programs i made in my free time (trash code warning (probably))
 **all of these i put under the mit licence**<br>
 **my site has the very very latest versions (so up to date that every time i save the code it's instantly pushed) but it's not always available (check the timetables)**
